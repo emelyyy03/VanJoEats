@@ -1,0 +1,35 @@
+package com.example.demo.modelos;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
+import java.math.BigDecimal;
+
+@Entity
+public class Platillo {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank(message = "El nombre del platillo es obligatorio")
+    private String nombre;
+
+    @Min(value = 0, message = "La cantidad no puede ser negativa")
+    private int cantidad;
+
+    @NotBlank(message = "Debe proporcionar una imagen")
+    private String imagen;
+
+    @DecimalMin(value = "0.00", message = "El precio no puede ser negativo")
+    @Digits(integer = 6, fraction = 2, message = "El precio debe tener como máximo 2 decimales")
+    private BigDecimal precio;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idCategoria", nullable = false)
+    private Categoria categoria;
+
+    @Min(value = 0, message = "La disponibilidad no puede ser negativa")
+    private int disponibilidad;
+    
+}
