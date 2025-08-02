@@ -14,6 +14,7 @@ public class Rol {
 private Integer Id;
 
 @NotBlank(message = "El nombre de rol es obligatorio")
+@Column(nullable = false, unique = true)
 private String nombre;
 
 @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
