@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Entity
 public class Platillo {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,8 +18,15 @@ public class Platillo {
     @Min(value = 0, message = "La cantidad no puede ser negativa")
     private int cantidad;
 
+    
+    @Lob
+    @Column(name = "imagen_platillo", nullable = false, columnDefinition = "LONGBLOB")
     @NotBlank(message = "Debe proporcionar una imagen")
-    private String imagen;
+    private byte[] imagenPlatillo;
+    /*
+     * @NotBlank(message = "Debe proporcionar una imagen")
+     * private String imagen;
+     */
 
     @DecimalMin(value = "0.00", message = "El precio no puede ser negativo")
     @Digits(integer = 6, fraction = 2, message = "El precio debe tener como máximo 2 decimales")
@@ -31,5 +38,5 @@ public class Platillo {
 
     @Min(value = 0, message = "La disponibilidad no puede ser negativa")
     private int disponibilidad;
-    
+
 }

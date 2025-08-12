@@ -11,6 +11,7 @@ public class PedidoRegistrado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    
     @NotNull(message = "Debe generar un número de pedido")
     private Integer numPedido;
 
@@ -23,5 +24,9 @@ public class PedidoRegistrado {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCliente", nullable = false)
     private Usuario cliente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idPlatillo", nullable = false)
+    private Platillo platillos_pedidos;
 
 }

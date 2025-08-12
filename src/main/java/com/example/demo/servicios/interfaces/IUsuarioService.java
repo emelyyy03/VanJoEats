@@ -1,6 +1,6 @@
 package com.example.demo.servicios.interfaces;
 
-import org.esfe.modelos.Usuario;
+import com.example.demo.modelos.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
