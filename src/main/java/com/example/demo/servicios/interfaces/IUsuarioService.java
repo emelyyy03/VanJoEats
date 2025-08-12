@@ -8,9 +8,11 @@ import java.util.List;
 
 public interface IUsuarioService {
     
-   Page<Usuario> obtenerTodosPaginados(Pageable pageable);
+    Page<Usuario> obtenerTodosPaginados(Pageable pageable);
 
     List<Usuario> obtenerTodos();
+
+    Page<Usuario> findByNombreContaining(String nombre,Pageable pageable);
 
     Usuario obtenerPorId(Integer id);
 
