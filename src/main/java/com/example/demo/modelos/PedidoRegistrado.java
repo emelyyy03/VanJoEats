@@ -29,4 +29,38 @@ public class PedidoRegistrado {
     @JoinColumn(name = "idPlatillo", nullable = false)
     private Platillo platillos_pedidos;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getNumPedido() {
+        return numPedido;
+    }
+
+    public void setNumPedido(Integer numPedido) {
+        this.numPedido = numPedido;
+    }
+
+    public LocalDate getFechaPedido() {
+        return fechaPedido;
+    }
+
+    public void setFechaPedido(LocalDate fechaPedido) {
+        this.fechaPedido = fechaPedido;
+    }
+
+    public String getDetallePedido() {
+        return detallePedido;
+    }
+
+    public void setDetallePedido(String detallePedido) {
+        this.detallePedido = detallePedido;
+    }
+
+    
+
 }

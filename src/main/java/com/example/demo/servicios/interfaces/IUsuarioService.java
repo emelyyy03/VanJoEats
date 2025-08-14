@@ -4,15 +4,16 @@ import com.example.demo.modelos.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IUsuarioService {
     
-    Page<Usuario> obtenerTodosPaginados(Pageable pageable);
-
     List<Usuario> obtenerTodos();
 
-    Page<Usuario> findByNombreContaining(String nombre,Pageable pageable);
+    boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro, String rol);
+  
+    Page<Usuario> findByNombreContainingAndEmailContainingAndFechaRegistroContainingAndRolContaining(String nombre, String email, Date fechaRegistro, String rol, Pageable pageable);
 
     Usuario obtenerPorId(Integer id);
 

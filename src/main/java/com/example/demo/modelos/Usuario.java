@@ -10,7 +10,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id; 
+    private Integer Id;
 
     @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
@@ -32,54 +32,52 @@ public class Usuario {
     @NotNull(message = "Debe seleccionar un rol")
     private Rol rol;
 
-public Integer getId() {
-    return Id;
-}
+    public Integer getId() {
+        return Id;
+    }
 
-public void setId(Integer id) {
-    Id = id;
-}
+    public void setId(Integer id) {
+        Id = id;
+    }
 
-public String getNombre() {
-    return nombre;
-}
+    public String getNombre() {
+        return nombre;
+    }
 
-public void setNombre(String nombre) {
-    this.nombre = nombre;
-}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-public String getEmail() {
-    return email;
-}
+    public String getEmail() {
+        return email;
+    }
 
-public void setEmail(String email) {
-    this.email = email;
-}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-public String getClave() {
-    return clave;
-}
+    public String getClave() {
+        return clave;
+    }
 
-public void setClave(String clave) {
-    this.clave = clave;
-}
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 
-public Date getFechaRegistro() {
-    return fechaRegistro;
-}
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
 
-public void setFechaRegistro(Date fechaRegistro) {
-    this.fechaRegistro = fechaRegistro;
-}
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
 
-public Rol getRol() {
-    return rol;
-}
+    public Rol getRol() {
+        return rol;
+    }
 
-public void setRol(Rol rol) {
-    this.rol = rol;
-}
-
-
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 
 }

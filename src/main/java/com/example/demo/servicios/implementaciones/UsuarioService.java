@@ -1,5 +1,6 @@
 package com.example.demo.servicios.implementaciones;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,6 @@ public class UsuarioService implements IUsuarioService {
 
     @Autowired
     private IUsuarioRepository usuarioRepository;
-
-    @Override
-    public Page<Usuario> obtenerTodosPaginados(Pageable pageable) {
-        return usuarioRepository.findAll(pageable);
-    }
 
     @Override
     public List<Usuario> obtenerTodos() {
@@ -41,8 +37,17 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Page<Usuario> findByNombreContaining(String nombre, Pageable pageable) {
-        return usuarioRepository.findByNombreContaining(nombre, pageable);
+    public Page<Usuario> findByNombreContainingAndEmailContainingAndFechaRegistroContainingAndRolContaining(
+            String nombre, String email, Date fechaRegistro, String rol, Pageable pageable) {
+        return usuarioRepository.findByNombreContainingAndEmailContainingAndFechaRegistroContainingAndRolContaining(
+                nombre, email, fechaRegistro, rol, pageable);
+
+    }
+
+    @Override
+    public boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro,
+            String rol) {
+        return usuarioRepository.existsByNombreOrEmailOrFechaRegistroOrRol(nombre, email, fechaRegistro, rol);
     }
 
 }
