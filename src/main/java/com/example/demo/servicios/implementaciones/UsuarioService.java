@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.example.demo.modelos.Rol;
 import com.example.demo.modelos.Usuario;
 import com.example.demo.repositorios.IUsuarioRepository;
 import com.example.demo.servicios.interfaces.IUsuarioService;
@@ -37,16 +38,16 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Page<Usuario> findByNombreContainingAndEmailContainingAndFechaRegistroContainingAndRolContaining(
-            String nombre, String email, Date fechaRegistro, String rol, Pageable pageable) {
-        return usuarioRepository.findByNombreContainingAndEmailContainingAndFechaRegistroContainingAndRolContaining(
-                nombre, email, fechaRegistro, rol, pageable);
+    public Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRolContaining(
+            String nombre, String email, String telefono, Date fechaRegistro, Rol rol, Pageable pageable) {
+        return usuarioRepository.findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRolContaining(
+                nombre, email, telefono, fechaRegistro, rol, pageable);
 
     }
 
     @Override
     public boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro,
-            String rol) {
+            Rol rol) {
         return usuarioRepository.existsByNombreOrEmailOrFechaRegistroOrRol(nombre, email, fechaRegistro, rol);
     }
 

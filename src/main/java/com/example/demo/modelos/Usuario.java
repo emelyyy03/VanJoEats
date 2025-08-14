@@ -20,12 +20,16 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @NotBlank(message = "La contraseña es obligatoria")
-    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
-    private String clave;
+    @NotBlank(message = "El número de teléfono es obligatorio")
+    @Pattern(regexp = "^[0-9]{8,15}$", message = "El teléfono debe tener entre 8 y 15 dígitos")
+    private String telefono;
 
     @NotBlank(message = "Ingrese la fecha de registro de su usuario")
     private Date fechaRegistro;
+
+    @NotBlank(message = "La contraseña es obligatoria")
+    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
+    private String clave;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdRol", nullable = false)

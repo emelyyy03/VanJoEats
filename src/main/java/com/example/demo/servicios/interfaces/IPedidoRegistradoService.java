@@ -12,7 +12,7 @@ public interface IPedidoRegistradoService {
 
     List<PedidoRegistrado> obtenerTodos();
 
-    Page<PedidoRegistrado> findByNombreContainingAndNumPedidoContainingAndFechaPedidoContainingAndDetallePedidoContainingAndClienteContaining(String nombre, int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable);
+    Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteContaining(int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable);
 
     PedidoRegistrado obtenerPorId(Integer id);
 

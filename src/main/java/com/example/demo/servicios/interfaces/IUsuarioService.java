@@ -1,5 +1,6 @@
 package com.example.demo.servicios.interfaces;
 
+import com.example.demo.modelos.Rol;
 import com.example.demo.modelos.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,9 +12,9 @@ public interface IUsuarioService {
     
     List<Usuario> obtenerTodos();
 
-    boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro, String rol);
+    boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro, Rol rol);
   
-    Page<Usuario> findByNombreContainingAndEmailContainingAndFechaRegistroContainingAndRolContaining(String nombre, String email, Date fechaRegistro, String rol, Pageable pageable);
+    Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRolContaining(String nombre, String email, String telefono, Date fechaRegistro, Rol rol, Pageable pageable);
 
     Usuario obtenerPorId(Integer id);
 

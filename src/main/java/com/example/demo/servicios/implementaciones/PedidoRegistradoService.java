@@ -22,11 +22,11 @@ public class PedidoRegistradoService implements IPedidoRegistradoService {
     }
 
     @Override
-    public Page<PedidoRegistrado> findByNombreContainingAndNumPedidoContainingAndFechaPedidoContainingAndDetallePedidoContainingAndClienteContaining(
-            String nombre, int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable) {
+    public Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteContaining(
+            int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable) {
         return pedidoRegistradoRepository
-                .findByNombreContainingAndNumPedidoContainingAndFechaPedidoContainingAndDetallePedidoContainingAndClienteContaining(
-                        nombre, numPedido, fechaPedido, detallePedido, cliente, pageable);
+                .findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteContaining(
+                        numPedido, fechaPedido, detallePedido, cliente, pageable);
     }
 
     @Override

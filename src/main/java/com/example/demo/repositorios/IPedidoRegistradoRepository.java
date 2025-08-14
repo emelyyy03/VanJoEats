@@ -9,6 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IPedidoRegistradoRepository extends JpaRepository<PedidoRegistrado, Integer> {
-    Page<PedidoRegistrado> findByNombreContainingAndNumPedidoContainingAndFechaPedidoContainingAndDetallePedidoContainingAndClienteContaining(
-            String nombre, int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable);
+    Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteContaining(
+             int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable);
 }
