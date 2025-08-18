@@ -18,11 +18,9 @@ public class Platillo {
     @Min(value = 0, message = "La cantidad no puede ser negativa")
     private int cantidad;
 
-    
-    @Lob
-    @Column(name = "imagen_platillo", nullable = false, columnDefinition = "LONGBLOB")
+    @Column(name = "imagen_platillo", nullable = false, length = 255)
     @NotBlank(message = "Debe proporcionar una imagen")
-    private byte[] imagenPlatillo;
+    private String imagenPlatillo;
     /*
      * @NotBlank(message = "Debe proporcionar una imagen")
      * private String imagen;
@@ -63,11 +61,11 @@ public class Platillo {
         this.cantidad = cantidad;
     }
 
-    public byte[] getImagenPlatillo() {
+    public String getImagenPlatillo() {
         return imagenPlatillo;
     }
 
-    public void setImagenPlatillo(byte[] imagenPlatillo) {
+    public void setImagenPlatillo(String imagenPlatillo) {
         this.imagenPlatillo = imagenPlatillo;
     }
 
@@ -94,7 +92,5 @@ public class Platillo {
     public void setDisponibilidad(int disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
-
-    
 
 }
