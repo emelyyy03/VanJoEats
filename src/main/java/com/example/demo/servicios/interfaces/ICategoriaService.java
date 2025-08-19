@@ -1,6 +1,7 @@
 package com.example.demo.servicios.interfaces;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +14,7 @@ List<Categoria> obtenerTodos();
 
     Page<Categoria> findByNombreContaining(String nombre, Pageable pageable);
 
-    Categoria obtenerPorId(Integer id);
+    Optional<Categoria> obtenerPorId(Integer id);
 
     Categoria crearOEditar(Categoria categoria);
 
