@@ -10,14 +10,14 @@
         <hr />
         <dl class="row">
             <dt class = "col-sm-2" >ID</dt>
-            <dd class = "col-sm-10" th:text="${categoriaid}"></dd>
+            <dd class = "col-sm-10" th:text="${categoria.id}"></dd>
 
             <dt class = "col-sm-2">Nombre</dt>
-            <dd class = "col-sm-10" th:text="${categorianombre}"></dd>
+            <dd class = "col-sm-10" th:text="${categoria.nombre}"></dd>
         </dl>
 
         <form th:action="@{/categoria/delete}" method="post">
-            <input type="hidden" name="Id" th:value="${categoriaid}">
+            <input type="hidden" name="Id" th:value="${categoria.id}">
             <input type="submit" value="Eliminar" class="btn btn-danger"> |
             <a th:href="@{/categoria}">Regresar</a>
         </form>
