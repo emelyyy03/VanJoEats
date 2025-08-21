@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping("/categorias")
+@RequestMapping("/categoria")
 
 public class CategoriaController {
     @Autowired
