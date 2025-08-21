@@ -17,7 +17,7 @@
         </dl>
 
         <form th:action="@{/categoria/delete}" method="post">
-            <input type="hidden" name="Id" th:value="${categoria.id}">
+            <input type="hidden" name="id" th:value="${categoria.id}">
             <input type="submit" value="Eliminar" class="btn btn-danger"> |
             <a th:href="@{/categoria}">Regresar</a>
         </form>
