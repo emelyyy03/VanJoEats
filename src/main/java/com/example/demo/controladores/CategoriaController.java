@@ -68,7 +68,7 @@ public class CategoriaController {
         if (result.hasErrors()) {
             model.addAttribute(categoria);
             attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");
-            return "grupo/create";
+            return "categoria/create";
         }
 
         categoriaService.crearOEditar(categoria);

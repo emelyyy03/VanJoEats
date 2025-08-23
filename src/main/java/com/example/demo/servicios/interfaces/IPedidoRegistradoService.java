@@ -2,6 +2,7 @@ package com.example.demo.servicios.interfaces;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +15,7 @@ public interface IPedidoRegistradoService {
 
     Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteContaining(int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable);
 
-    PedidoRegistrado obtenerPorId(Integer id);
+    Optional<PedidoRegistrado> obtenerPorId(Integer id);
 
     void eliminarPorId(Integer id);
 

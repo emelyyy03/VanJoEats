@@ -13,6 +13,6 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro, Rol rol);
 
-    Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRolContaining(
+    Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
         String nombre, String email, String telefono, Date fechaRegistro, Rol rol, Pageable pageable);
 }

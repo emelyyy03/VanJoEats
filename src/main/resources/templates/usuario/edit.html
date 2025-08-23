@@ -1,0 +1,56 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="/layouts/_menuLayout">
+
+<div layout:fragment="content">
+    <h1>Editar grupo</h1>
+    <form th:action="@{/usuario/save}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                        placeholder="Nombre de usuario" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" th:field="*{email}" id="email"
+                        placeholder="Direccion de email" required>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" class="form-control" th:field="*{telefono}" id="telefono"
+                        placeholder="Numero de telefono" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fechaRegistro">Fecha de registro</label>
+                    <input type="date" class="form-control" th:field="*{fechaRegistro}" id="fechaRegistro"
+                        placeholder="Fecha de registro" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select id="rol" name="rol" class="form-control" required>
+                        <option th:each="rol : ${rol}" th:value="${rol.id}" th:text="${rol.nombre}"
+                            th:selected="${rol.id} == ${usuario.rol.id}"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+</div>
+<hr>
+<button type="submit" class="btn btn-primary">Guardar cambios</button> |
+<a th:href="@{/usuario}">Regresar</a>
+</form>
+</div>

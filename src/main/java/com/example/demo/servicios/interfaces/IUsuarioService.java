@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface IUsuarioService {
     
@@ -14,9 +15,9 @@ public interface IUsuarioService {
 
     boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro, Rol rol);
   
-    Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRolContaining(String nombre, String email, String telefono, Date fechaRegistro, Rol rol, Pageable pageable);
+    Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(String nombre, String email, String telefono, Date fechaRegistro, Rol rol, Pageable pageable);
 
-    Usuario obtenerPorId(Integer id);
+    Optional<Usuario> obtenerPorId(Integer id);
 
     Usuario crearOEditar(Usuario usuario);
 

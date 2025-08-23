@@ -2,12 +2,14 @@ package com.example.demo.servicios.implementaciones;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.modelos.Categoria;
 import com.example.demo.modelos.Platillo;
 import com.example.demo.repositorios.IPlatilloRepository;
 import com.example.demo.servicios.interfaces.IPlatilloService;
@@ -24,15 +26,15 @@ public class PlatilloService implements IPlatilloService {
     }
 
     @Override
-    public Page<Platillo> findByNombreContainingAndPrecioContainingAndCategoriaContaining(String nombre,
-            BigDecimal precio, String categoria, Pageable pageable) {
-        return platilloRepository.findByNombreContainingAndPrecioContainingAndCategoriaContaining(nombre, precio,
+    public Page<Platillo> findByNombreContainingAndPrecioAndCategoria(String nombre,
+            BigDecimal precio, Categoria categoria, Pageable pageable) {
+        return platilloRepository.findByNombreContainingAndPrecioAndCategoria(nombre, precio,
                 categoria, pageable);
     }
 
     @Override
-    public Platillo obtenerPorId(Integer id) {
-        return platilloRepository.findById(id).get();
+    public Optional<Platillo> obtenerPorId(Integer id) {
+        return platilloRepository.findById(id);
     }
 
     @Override

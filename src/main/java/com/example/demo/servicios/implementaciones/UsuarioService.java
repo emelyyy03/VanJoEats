@@ -2,6 +2,7 @@ package com.example.demo.servicios.implementaciones;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,8 +26,8 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Usuario obtenerPorId(Integer id) {
-        return usuarioRepository.findById(id).get();
+    public Optional<Usuario> obtenerPorId(Integer id) {
+        return usuarioRepository.findById(id);
     }
 
     @Override
@@ -40,9 +41,9 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRolContaining(
+    public Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
             String nombre, String email, String telefono, Date fechaRegistro, Rol rol, Pageable pageable) {
-        return usuarioRepository.findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRolContaining(
+        return usuarioRepository.findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
                 nombre, email, telefono, fechaRegistro, rol, pageable);
 
     }
