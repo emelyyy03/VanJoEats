@@ -1,6 +1,6 @@
 package com.example.demo.servicios.interfaces;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,14 +8,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.example.demo.modelos.PedidoRegistrado;
+import com.example.demo.modelos.Usuario;
 
 public interface IPedidoRegistradoService {
 
-    List<PedidoRegistrado> obtenerTodos();
+    List<PedidoRegistrado> obtenerTodos();       
 
-    Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteContaining(int numPedido, Date fechaPedido, String detallePedido, String cliente, Pageable pageable);
+    Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndCliente(int numPedido, LocalDate fechaPedido, String detallePedido, Usuario cliente, Pageable pageable);
 
     Optional<PedidoRegistrado> obtenerPorId(Integer id);
+
+    PedidoRegistrado crearOEditar(PedidoRegistrado pedidoRegistrado);
 
     void eliminarPorId(Integer id);
 

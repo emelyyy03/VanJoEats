@@ -27,7 +27,7 @@ import com.example.demo.servicios.interfaces.ICategoriaService;
 import com.example.demo.servicios.interfaces.IPlatilloService;
 
 @Controller
-@RequestMapping("/Platillo")
+@RequestMapping("/platillo")
 public class PlatilloController {
 
     @Autowired

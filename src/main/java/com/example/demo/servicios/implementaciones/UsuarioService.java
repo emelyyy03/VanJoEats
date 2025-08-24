@@ -1,6 +1,6 @@
 package com.example.demo.servicios.implementaciones;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,14 +42,14 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
-            String nombre, String email, String telefono, Date fechaRegistro, Rol rol, Pageable pageable) {
+            String nombre, String email, String telefono, LocalDate fechaRegistro, Rol rol, Pageable pageable) {
         return usuarioRepository.findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
                 nombre, email, telefono, fechaRegistro, rol, pageable);
 
     }
 
     @Override
-    public boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, Date fechaRegistro,
+    public boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, LocalDate fechaRegistro,
             Rol rol) {
         return usuarioRepository.existsByNombreOrEmailOrFechaRegistroOrRol(nombre, email, fechaRegistro, rol);
     }

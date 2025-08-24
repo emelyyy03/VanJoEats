@@ -2,8 +2,7 @@ package com.example.demo.modelos;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Usuario {
@@ -24,8 +23,9 @@ public class Usuario {
     @Pattern(regexp = "^[0-9]{8,15}$", message = "El teléfono debe tener entre 8 y 15 dígitos")
     private String telefono;
 
-    @NotBlank(message = "Ingrese la fecha de registro de su usuario")
-    private Date fechaRegistro;
+    @NotNull
+    @PastOrPresent
+    private LocalDate fechaRegistro;
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
@@ -68,14 +68,6 @@ public class Usuario {
         this.clave = clave;
     }
 
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
     public Rol getRol() {
         return rol;
     }
@@ -91,5 +83,15 @@ public class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public LocalDate getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(LocalDate fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    
 
 }

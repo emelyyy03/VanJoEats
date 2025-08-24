@@ -1,17 +1,15 @@
 package com.example.demo.servicios.implementaciones;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.modelos.PedidoRegistrado;
-import com.example.demo.modelos.Platillo;
 import com.example.demo.modelos.Usuario;
 import com.example.demo.repositorios.IPedidoRegistradoRepository;
 import com.example.demo.servicios.interfaces.IPedidoRegistradoService;
@@ -28,10 +26,11 @@ public class PedidoRegistradoService implements IPedidoRegistradoService {
     }
 
     @Override
-    public Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteAndPlatillo(
-            int numPedido, Date fechaPedido, String detallePedido, Usuario cliente, Platillo platillo, Pageable pageable) {
-        return pedidoRegistradoRepository.findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndClienteAndPlatillo(
-                        numPedido, fechaPedido, detallePedido, cliente, platillo, pageable);
+    public Page<PedidoRegistrado> findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndCliente(
+            int numPedido, LocalDate fechaPedido, String detallePedido, Usuario cliente,
+            Pageable pageable) {
+        return pedidoRegistradoRepository.findByNumPedidoAndFechaPedidoAndDetallePedidoContainingAndCliente(
+                numPedido, fechaPedido, detallePedido, cliente, pageable);
     }
 
     @Override
@@ -42,6 +41,11 @@ public class PedidoRegistradoService implements IPedidoRegistradoService {
     @Override
     public void eliminarPorId(Integer id) {
         pedidoRegistradoRepository.deleteById(id);
+    }
+
+    @Override
+    public PedidoRegistrado crearOEditar(PedidoRegistrado pedidoRegistrado) {
+        return pedidoRegistradoRepository.save(pedidoRegistrado);
     }
 
 }
