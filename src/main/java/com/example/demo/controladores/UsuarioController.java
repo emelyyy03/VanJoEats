@@ -1,5 +1,5 @@
 package com.example.demo.controladores;
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 //import org.springframework.security.crypto.password.PasswordEncoder;
-import com.example.demo.modelos.Rol;
 import com.example.demo.modelos.Usuario;
 import com.example.demo.servicios.interfaces.IRolService;
 import com.example.demo.servicios.interfaces.IUsuarioService;
@@ -35,14 +34,13 @@ public class UsuarioController {
     @Autowired
     private IRolService rolService;
 
-  //  @Autowired
-    //private PasswordEncoder passwordEncoder;
+    // @Autowired
+    // private PasswordEncoder passwordEncoder;
 
     @GetMapping
     public String index(Model model, @RequestParam("page") Optional<Integer> page,
             @RequestParam("size") Optional<Integer> size, @RequestParam("nombre") Optional<String> nombre,
-            @RequestParam("email") Optional<String> email, @RequestParam("telefono") Optional<String> telefono,
-            @RequestParam("fechaRegistro") Optional<LocalDate> fechaRegistro, @RequestParam("rol") Optional<Rol> rol) {
+            @RequestParam("email") Optional<String> email, @RequestParam("telefono") Optional<String> telefono) {
         int currentPage = page.orElse(1) - 1; // si no está seteado se asigna 0
         int pageSize = size.orElse(5); // tamaño de la página, se asigna 5
         Sort sortByIdDesc = Sort.by(Sort.Direction.DESC, "id");
@@ -50,12 +48,9 @@ public class UsuarioController {
         String nombreSearch = nombre.orElse("");
         String emailSearch = email.orElse("");
         String telefonoSearch = telefono.orElse("");
-        LocalDate fechaRegistroSearch = fechaRegistro.orElse(null);
-        Rol rolSearch = rol.orElse(null);
         Page<Usuario> usuario = usuarioService
-                .findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
-                        nombreSearch, emailSearch, telefonoSearch, fechaRegistroSearch, rolSearch,
-                        pageable);
+                .findByNombreContainingAndEmailContainingAndTelefonoContaining(
+                        nombreSearch, emailSearch, telefonoSearch, pageable);
         model.addAttribute("usuario", usuario);
 
         int totalPages = usuario.getTotalPages();
@@ -76,7 +71,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam("rol") Integer rol, Usuario usuario, BindingResult result, Model model, RedirectAttributes attributes) {
+    public String save(@RequestParam("rol") Integer rol, Usuario usuario, BindingResult result, Model model,
+            RedirectAttributes attributes) {
         if (result.hasErrors()) {
             model.addAttribute(usuario);
             model.addAttribute("roles", rolService.obtenerTodos());
@@ -100,6 +96,7 @@ public class UsuarioController {
     public String edit(@PathVariable("id") Integer id, Model model) {
         Usuario usuario = usuarioService.obtenerPorId(id).get();
         model.addAttribute("usuario", usuario);
+        model.addAttribute("roles", rolService.obtenerTodos());
         return "usuario/edit";
     }
 

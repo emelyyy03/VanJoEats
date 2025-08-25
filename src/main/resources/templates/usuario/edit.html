@@ -42,15 +42,24 @@
                 <div class="form-group">
                     <label for="rol">Rol</label>
                     <select id="rol" name="rol" class="form-control" required>
-                        <option th:each="rol : ${rol}" th:value="${rol.id}" th:text="${rol.nombre}"
+                        <option th:each="rol : ${roles}" th:value="${rol.id}" th:text="${rol.nombre}"
                             th:selected="${rol.id} == ${usuario.rol.id}"></option>
                     </select>
                 </div>
             </div>
         </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button> |
+                    <a th:href="@{/usuario}">Regresar</a>
+                </div>
+            </div>
+        </div>
+
 </div>
 <hr>
-<button type="submit" class="btn btn-primary">Guardar cambios</button> |
-<a th:href="@{/usuario}">Regresar</a>
+
 </form>
 </div>

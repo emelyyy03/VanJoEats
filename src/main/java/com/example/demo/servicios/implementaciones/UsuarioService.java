@@ -1,6 +1,5 @@
 package com.example.demo.servicios.implementaciones;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import com.example.demo.modelos.Rol;
 import com.example.demo.modelos.Usuario;
 import com.example.demo.repositorios.IUsuarioRepository;
 import com.example.demo.servicios.interfaces.IUsuarioService;
@@ -41,17 +38,16 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
-            String nombre, String email, String telefono, LocalDate fechaRegistro, Rol rol, Pageable pageable) {
-        return usuarioRepository.findByNombreContainingAndEmailContainingAndTelefonoContainingAndFechaRegistroAndRol(
-                nombre, email, telefono, fechaRegistro, rol, pageable);
+    public Page<Usuario> findByNombreContainingAndEmailContainingAndTelefonoContaining(
+            String nombre, String email, String telefono, Pageable pageable) {
+        return usuarioRepository.findByNombreContainingAndEmailContainingAndTelefonoContaining(
+                nombre, email, telefono, pageable);
 
     }
 
     @Override
-    public boolean existsByNombreOrEmailOrFechaRegistroOrRol(String nombre, String email, LocalDate fechaRegistro,
-            Rol rol) {
-        return usuarioRepository.existsByNombreOrEmailOrFechaRegistroOrRol(nombre, email, fechaRegistro, rol);
+    public boolean existsByNombreOrEmail(String nombre, String email) {
+        return usuarioRepository.existsByNombreOrEmail(nombre, email);
     }
 
 }
